@@ -2,6 +2,12 @@
 import { db } from '@/db';
 import Link from 'next/link';
 
+/*Force dynamic rendering, which will result in routes being rendered 
+for each user at request time. This option is equivalent 
+to getServerSideProps() in the pages directory.
+*/
+// export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const snippets = await db.snippet.findMany();
 
@@ -22,7 +28,7 @@ export default async function Home() {
     <div>
       <div className='flex m-2 justify-between items-center'>
           <h1 className="text-xl font-bold">Snippets</h1>
-          <Link href="/snippets/new" className='border p-2 ounded'>New</Link>
+          <Link href="/snippets/new" className='border p-2 rounded'>New</Link>
 
       </div>
       
